@@ -155,3 +155,9 @@ And extend the pre-commit config to include prospector:
 
 ### Automation
 - [GitHub Actions](https://docs.github.com/en/actions) for CI/CD
+
+## FAQ
+
+### Why not use [cookiecutter](https://pypi.org/project/cookiecutter/)?
+
+This absolutely could have been a cookiecutter template, but it was more important to me to create a working demo respository and document the steps I took to set it up. I may create a cookiecutter template in the future, and if I do, I'll link to it here.
