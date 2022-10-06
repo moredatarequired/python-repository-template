@@ -42,6 +42,7 @@ Especially if you just want only some of these tools, or if you want to apply th
 ```bash
 poetry new python-repository-template
 cd python-repository-template
+poetry shell
 ```
 
 ### Create a new repository
@@ -52,4 +53,70 @@ git push --set-upstream origin main
 git add .
 git commit -m "Initialize repository with poetry"
 git push
+```
+
+### Add pre-commit
+
+```bash
+poetry add pre-commit --group dev
+```
+
+Create a [`.pre-commit-config.yaml`](.pre-commit-config.yaml) file with the following contents:
+
+```yaml
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-builtin-literals
+      - id: check-byte-order-marker
+      - id: check-case-conflict
+      - id: check-docstring-first
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: check-vcs-permalinks
+      - id: check-yaml
+      - id: detect-aws-credentials
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: name-tests-test
+      - id: trailing-whitespace
+```
+
+Install pre-commit and run against all files:
+
+```bash
+pre-commit install
+pre-commit run --all-files
+```
+
+
+### Add black and isort
+
+```bash
+poetry add black isort --group dev
+```
+
+Add the following to [`pyproject.toml`](pyproject.toml):
+```toml
+[tool.isort]
+profile = "black"
+```
+
+And extend the pre-commit config to include black and isort:
+
+```yaml
+  - repo: https://github.com/psf/black
+    rev: 22.8.0
+    hooks:
+      - id: black
+        language_version: python3.10
+  - repo: https://github.com/pycqa/isort
+    rev: 5.10.1
+    hooks:
+      - id: isort
+        name: isort (python)
 ```
