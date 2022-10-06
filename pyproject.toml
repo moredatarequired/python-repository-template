@@ -1,7 +1,8 @@
 [tool.poetry]
 name = "package-name"
 version = "0.1.0"
-description = ""
+description = "Create a new python repository with useful tools already set up"
+license = "Unlicense"
 authors = ["Author Name <author@orgname.org>"]
 readme = "README.md"
 packages = [{include = "package_name"}]
