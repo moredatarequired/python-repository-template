@@ -10,17 +10,26 @@ gh repo create --template "moredatarequired/python-repository-template"
 
 ## Features
 
+### Packaging and dependency management
 - [poetry](https://python-poetry.org/) for dependency management
-- [mypy](https://mypy.readthedocs.io/en/stable/) for static type checking
+
+### Code style and linting
 - [black](https://black.readthedocs.io/en/stable/) for code formatting
 - [isort](https://pycqa.github.io/isort/) for sorting imports
 - [flake8](https://flake8.pycqa.org/en/latest/) for linting
 - [bandit](https://bandit.readthedocs.io/en/latest/) for security linting
+- [mypy](https://mypy.readthedocs.io/en/stable/) for static type checking
+
+### Testing
 - [pytest](https://docs.pytest.org/en/stable/) for testing
 - [coverage](https://coverage.readthedocs.io/en/stable/) for measuring test coverage
+
+### Documentation
 - [sphinx](https://www.sphinx-doc.org/en/master/) for documentation
 - [sphinx-rtd-theme](https://sphinx-rtd-theme.readthedocs.io/en/stable/) for documentation theme
 - [readthedocs](https://readthedocs.org/) for documentation hosting
+
+### Automation
 - [pre-commit](https://pre-commit.com/) for linting and formatting
 - [GitHub Actions](https://docs.github.com/en/actions) for CI/CD
 
