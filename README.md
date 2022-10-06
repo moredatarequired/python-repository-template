@@ -13,10 +13,10 @@ gh repo create --template "moredatarequired/python-repository-template"
 ### Packaging and dependency management
 - [poetry](https://python-poetry.org/) for dependency management
 
-### Code style and linting
+### Code quality
 - [black](https://black.readthedocs.io/en/stable/) for code formatting
 - [isort](https://pycqa.github.io/isort/) for sorting imports
-- [flake8](https://flake8.pycqa.org/en/latest/) for linting
+- [prospector](https://prospector.landscape.io/en/master/) for static analysis
 - [bandit](https://bandit.readthedocs.io/en/latest/) for security linting
 - [mypy](https://mypy.readthedocs.io/en/stable/) for static type checking
 
@@ -96,7 +96,7 @@ pre-commit run --all-files
 ### Add black and isort
 
 ```bash
-poetry add black isort --group dev
+poetry add black[jupyter] isort --group dev
 ```
 
 Add the following to [`pyproject.toml`](pyproject.toml):
@@ -111,11 +111,39 @@ And extend the pre-commit config to include black and isort:
   - repo: https://github.com/psf/black
     rev: 22.8.0
     hooks:
-      - id: black
+      - id: black-jupyter
         language_version: python3.10
   - repo: https://github.com/pycqa/isort
     rev: 5.10.1
     hooks:
       - id: isort
         name: isort (python)
+```
+
+### Add prospector
+
+```bash
+poetry add prospector[with_bandit,with_vulture] --group dev
+```
+
+Add the following to [`pyproject.toml`](pyproject.toml):
+```toml
+[tool.prospector]
+strictness = "veryhigh"
+test-warnings = true
+doc-warnings = true
+max-line-length = 88
+profile = "full_pep8"
+ignore-paths = ["**/tests/**", "**/test_*.py", "**/conftest.py", "**/setup.py", "**/setup.cfg", "**/wsgi.py"]
+```
+
+And extend the pre-commit config to include prospector:
+
+```yaml
+  - repo: https://github.com/PyCQA/prospector
+    rev: 1.7.5
+    hooks:
+    -   id: prospector
+        additional_dependencies:
+        - ".[with_bandit,with_vulture]"
 ```

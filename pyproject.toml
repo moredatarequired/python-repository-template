@@ -12,9 +12,10 @@ python = "^3.10"
 
 
 [tool.poetry.group.dev.dependencies]
-black = "^22.8.0"
+black = {extras = ["jupyter"], version = "^22.8.0"}
 isort = "^5.10.1"
 pre-commit = "^2.20.0"
+prospector = {extras = ["with_bandit", "with_vulture"], version = "^1.7.7"}
 
 [build-system]
 requires = ["poetry-core"]
