@@ -96,7 +96,7 @@ pre-commit run --all-files
 ### Add black and isort
 
 ```bash
-poetry add black[jupyter] isort --group dev
+poetry add black[jupyter] blacken-docs isort --group dev
 ```
 
 Add the following to [`pyproject.toml`](pyproject.toml):
@@ -113,6 +113,11 @@ And extend the pre-commit config to include black and isort:
     hooks:
       - id: black-jupyter
         language_version: python3.10
+  - repo: https://github.com/asottile/blacken-docs
+    rev: v1.12.1
+    hooks:
+      - id: blacken-docs
+        additional_dependencies: [black==22.8.0]
   - repo: https://github.com/pycqa/isort
     rev: 5.10.1
     hooks:
