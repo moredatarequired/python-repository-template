@@ -16,9 +16,16 @@ gh repo create --template "moredatarequired/python-repository-template"
 ### Code quality
 - [black](https://black.readthedocs.io/en/stable/) for code formatting
 - [isort](https://pycqa.github.io/isort/) for sorting imports
-- [prospector](https://prospector.landscape.io/en/master/) for static analysis
-- [bandit](https://bandit.readthedocs.io/en/latest/) for security linting
-- [mypy](https://mypy.readthedocs.io/en/stable/) for static type checking
+- [prospector](https://prospector.landscape.io/en/master/) for static analysis, including:
+    - [pylint](https://pylint.org/) for linting
+    - [pycodestyle](https://pycodestyle.pycqa.org/en/latest/) for PEP8 compliance
+    - [pyflakes](https://pypi.org/project/pyflakes/) for basic syntax errors
+    - [mccabe](https://pypi.org/project/mccabe/) for cyclomatic complexity
+    - [dodgy](https://pypi.org/project/dodgy/) for security issues
+    - [pydocstyle](https://www.pydocstyle.org/en/stable/) for docstring linting
+    - [mypy](https://mypy.readthedocs.io/en/stable/) for static type checking
+    - [bandit](https://bandit.readthedocs.io/en/latest/) for security linting
+    - [vulture](https://pypi.org/project/vulture/) for unused code detection
 
 ### Testing
 - [pytest](https://docs.pytest.org/en/stable/) for testing
@@ -128,18 +135,7 @@ And extend the pre-commit config to include black and isort:
 ### Add prospector
 
 ```bash
-poetry add prospector[with_bandit,with_vulture] --group dev
-```
-
-Add the following to [`pyproject.toml`](pyproject.toml):
-```toml
-[tool.prospector]
-strictness = "veryhigh"
-test-warnings = true
-doc-warnings = true
-max-line-length = 88
-profile = "full_pep8"
-ignore-paths = ["**/tests/**", "**/test_*.py", "**/conftest.py", "**/setup.py", "**/setup.cfg", "**/wsgi.py"]
+poetry add prospector[with_bandit,with_mypy,with_vulture] --group dev
 ```
 
 And extend the pre-commit config to include prospector:
@@ -150,5 +146,5 @@ And extend the pre-commit config to include prospector:
     hooks:
     -   id: prospector
         additional_dependencies:
-        - ".[with_bandit,with_vulture]"
+        - ".[with_bandit,with_mypy,with_vulture]"
 ```
