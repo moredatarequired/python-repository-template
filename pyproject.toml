@@ -11,6 +11,10 @@ packages = [{include = "package_name"}]
 python = "^3.7"
 
 
+[tool.poetry.group.dev.dependencies]
+black = "^22.8.0"
+isort = "^5.10.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
