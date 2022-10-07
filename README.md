@@ -147,6 +147,48 @@ And extend the pre-commit config to include prospector:
         - ".[with_bandit,with_mypy,with_vulture]"
 ```
 
+### Add pytest
+
+```bash
+poetry add pytest --group dev
+```
+
+Add cache files to the `.gitignore`:
+
+```gitignore
+# pytest
+__pycache__
+.pytest_cache
+```
+
+And add a very simple pair of files to test:
+
+[`example.py`](example.py)
+```python
+from dataclasses import dataclass
+
+
+@dataclass
+class Example:
+    """Example class for package_name."""
+
+    name: str = "example"
+
+    def name_reversed(self) -> str:
+        """Return `name` backwards."""
+        return self.name[::-1]
+```
+
+[`test_example.py`](test_example.py)
+```python
+from package_name.example import Example
+
+
+def test_name_reversed():
+    ex = Example()
+    assert ex.name_reversed() == "elpmaxe"
+```
+
 ## TODO
 
 ### Testing
