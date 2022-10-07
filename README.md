@@ -161,3 +161,7 @@ And extend the pre-commit config to include prospector:
 ### Why not use [cookiecutter](https://pypi.org/project/cookiecutter/)?
 
 This absolutely could have been a cookiecutter template, but it was more important to me to create a working demo respository and document the steps I took to set it up. I may create a cookiecutter template in the future, and if I do, I'll link to it here.
+
+## See also
+
+[hypermodern-python](https://github.com/cjolowicz/hypermodern-python) with the associated [guide](https://cjolowicz.github.io/posts/hypermodern-python-01-setup/) is a more in-depth setup guide. The tool chain Claudio chooses is a bit different than mine, but is an excellent set of choices. Claudio Jolowicz has also written a [cookiecutter template](https://github.com/cjolowicz/cookiecutter-hypermodern-python) that implements the guide, which is maybe even easier to use.
