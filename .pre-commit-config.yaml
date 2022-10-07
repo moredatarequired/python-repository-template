@@ -16,7 +16,6 @@ repos:
       - id: detect-aws-credentials
       - id: detect-private-key
       - id: end-of-file-fixer
-      - id: name-tests-test
       - id: trailing-whitespace
   - repo: https://github.com/psf/black
     rev: 22.8.0

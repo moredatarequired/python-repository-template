@@ -29,6 +29,11 @@ gh repo create --template "moredatarequired/python-repository-template"
     - [bandit](https://bandit.readthedocs.io/en/latest/) for security linting
     - [vulture](https://pypi.org/project/vulture/) for unused code detection
 
+
+### Testing
+
+- [pytest](https://docs.pytest.org/en/stable/) for testing
+
 ### Automation
 
 - [pre-commit](https://pre-commit.com/) for linting and formatting
@@ -145,15 +150,17 @@ And extend the pre-commit config to include prospector:
 ## TODO
 
 ### Testing
-- [pytest](https://docs.pytest.org/en/stable/) for testing
+
 - [coverage](https://coverage.readthedocs.io/en/stable/) for measuring test coverage
 
 ### Documentation
+
 - [sphinx](https://www.sphinx-doc.org/en/master/) for documentation
 - [sphinx-rtd-theme](https://sphinx-rtd-theme.readthedocs.io/en/stable/) for documentation theme
 - [readthedocs](https://readthedocs.org/) for documentation hosting
 
 ### Automation
+
 - [GitHub Actions](https://docs.github.com/en/actions) for CI/CD
 
 ## FAQ
